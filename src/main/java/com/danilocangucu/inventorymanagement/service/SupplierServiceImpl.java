@@ -3,10 +3,13 @@ package com.danilocangucu.inventorymanagement.service;
 import com.danilocangucu.inventorymanagement.entity.Supplier;
 import com.danilocangucu.inventorymanagement.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
+@Service
 public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierRepository supplierRepository;
@@ -16,7 +19,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Optional<Supplier> getSupplierById(Long id) {
+    public Optional<Supplier> getSupplierById(UUID id) {
         return supplierRepository.findById(id);
     }
 
@@ -35,7 +38,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public boolean deleteSupplier(Long id) {
+    public boolean deleteSupplier(UUID id) {
         if (supplierRepository.existsById(id)) {
             supplierRepository.deleteById(id);
             return true;

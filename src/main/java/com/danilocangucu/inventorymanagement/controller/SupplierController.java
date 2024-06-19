@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/suppliers")
@@ -22,7 +23,7 @@ public class SupplierController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Supplier> getSupplierById(@PathVariable Long id) {
+    public ResponseEntity<Supplier> getSupplierById(@PathVariable UUID id) {
         Optional<Supplier> foundSupplier = supplierService.getSupplierById(id);
         return foundSupplier.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -34,7 +35,7 @@ public class SupplierController {
     }
 
     @PutMapping
-    public ResponseEntity<Supplier> updateSupplier(@PathVariable Long id, @RequestBody Supplier supplier) {
+    public ResponseEntity<Supplier> updateSupplier(@PathVariable UUID id, @RequestBody Supplier supplier) {
         try {
             supplier.setId(id);
             Supplier updatedSupplier = supplierService.updateSupplier(supplier);
@@ -45,7 +46,7 @@ public class SupplierController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSupplier(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSupplier(@PathVariable UUID id) {
         boolean isDeleted = supplierService.deleteSupplier(id);
         if (isDeleted) {
             return ResponseEntity.noContent().build();

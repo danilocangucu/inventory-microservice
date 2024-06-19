@@ -1,12 +1,10 @@
 package com.danilocangucu.inventorymanagement.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -14,8 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Supplier {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(generator = "UUID")
+    @Column(nullable = false, updatable = false)
+    private UUID id;
+
+    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     private String name;
+
+    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
     private String email;
 }
