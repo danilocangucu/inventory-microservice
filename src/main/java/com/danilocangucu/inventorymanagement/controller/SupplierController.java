@@ -34,7 +34,7 @@ public class SupplierController {
         return ResponseEntity.ok(suppliers);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Supplier> updateSupplier(@PathVariable UUID id, @RequestBody Supplier supplier) {
         try {
             supplier.setId(id);
