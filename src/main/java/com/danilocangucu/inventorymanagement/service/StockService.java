@@ -14,6 +14,6 @@ public interface StockService {
     Stock updateStock(Stock stock);
     boolean deleteStock(UUID id);
     List<Stock> filterStocks(UUID supplierId, UUID productId);
-
     StockLevel checkStockLevel(UUID productId);
+    boolean isStockAvailable(UUID productId, int requiredQuantity);
 }
