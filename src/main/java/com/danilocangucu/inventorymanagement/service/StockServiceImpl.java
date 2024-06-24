@@ -76,4 +76,13 @@ public class StockServiceImpl implements StockService {
         }
             return StockLevel.SUFFICIENT;
     }
+
+    @Override
+    public boolean isStockAvailable(UUID productId, int requiredQuantity) {
+        int currentStockLevel = filterStocks(null, productId).stream()
+                .mapToInt(Stock::getQuantity)
+                .sum();
+
+        return currentStockLevel >= requiredQuantity;
+    }
 }
