@@ -2,6 +2,7 @@ package com.danilocangucu.inventorymanagement.controller;
 
 import com.danilocangucu.inventorymanagement.entity.Stock;
 import com.danilocangucu.inventorymanagement.service.StockService;
+import com.danilocangucu.inventorymanagement.util.StockLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,5 +61,11 @@ public class StockController {
                                                     @RequestParam(required = false) UUID productId) {
         List<Stock> stocks = stockService.filterStocks(supplierId, productId);
         return ResponseEntity.ok(stocks);
+    }
+
+    @GetMapping("/stock-level/{productId}")
+    public ResponseEntity<StockLevel> checkStockLevel(@PathVariable UUID productId) {
+        StockLevel stockLevel = stockService.checkStockLevel(productId);
+        return ResponseEntity.ok(stockLevel);
     }
 }

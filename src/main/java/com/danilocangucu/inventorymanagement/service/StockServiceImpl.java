@@ -2,6 +2,7 @@ package com.danilocangucu.inventorymanagement.service;
 
 import com.danilocangucu.inventorymanagement.entity.Stock;
 import com.danilocangucu.inventorymanagement.repository.StockRepository;
+import com.danilocangucu.inventorymanagement.util.StockLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,10 @@ import java.util.UUID;
 
 @Service
 public class StockServiceImpl implements StockService {
+    private static final int LOW_STOCK_LIMIT = 10;
+    private static final int VERY_LOW_STOCK_LIMIT = 5;
+    private static final int OUT_OF_STOCK_LIMIT = 0;
+
     @Autowired
     private StockRepository stockRepository;
     @Override
@@ -57,5 +62,18 @@ public class StockServiceImpl implements StockService {
             return stockRepository.findByProductId(productId);
         }
         throw new IllegalArgumentException("At least one of supplierId or productId must be provided.");
+    }
+
+    @Override
+    public StockLevel checkStockLevel(UUID productId) {
+        int currentStockLevel = filterStocks(null, productId).size();
+        if (currentStockLevel == OUT_OF_STOCK_LIMIT) {
+            return StockLevel.OUT_OF_STOCK;
+        } else if (currentStockLevel <= VERY_LOW_STOCK_LIMIT) {
+            return StockLevel.VERY_LOW;
+        } else if (currentStockLevel <= LOW_STOCK_LIMIT) {
+            return StockLevel.LOW;
+        }
+            return StockLevel.SUFFICIENT;
     }
 }

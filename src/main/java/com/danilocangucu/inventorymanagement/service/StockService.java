@@ -1,6 +1,7 @@
 package com.danilocangucu.inventorymanagement.service;
 
 import com.danilocangucu.inventorymanagement.entity.Stock;
+import com.danilocangucu.inventorymanagement.util.StockLevel;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,4 +14,6 @@ public interface StockService {
     Stock updateStock(Stock stock);
     boolean deleteStock(UUID id);
     List<Stock> filterStocks(UUID supplierId, UUID productId);
+
+    StockLevel checkStockLevel(UUID productId);
 }
