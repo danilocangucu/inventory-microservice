@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,8 +25,6 @@ public class OrderItemController {
 
     @PostMapping
     public ResponseEntity<OrderItem> createOrderItem(@RequestBody OrderItemDTO orderItemToCreate, @RequestParam UUID orderId) {
-        System.out.println("orderId: " + orderId);
-
         Optional<Order> foundOrder = orderRepository.findById(orderId);
 
         if (foundOrder.isEmpty()) {
@@ -34,6 +33,18 @@ public class OrderItemController {
 
         OrderItem createdOrderItem = orderItemService.createOrderItem(orderItemToCreate, foundOrder.get());
         return ResponseEntity.ok(createdOrderItem);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderItem> getOrderItemById(@PathVariable UUID id) {
+        Optional<OrderItem> foundOrderItem = orderItemService.getOrderItemById(id);
+        return foundOrderItem.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderItem>> getAllOrderItems() {
+        List<OrderItem> orderItems = orderItemService.getAllOrderItems();
+        return ResponseEntity.ok(orderItems);
     }
 
 }
