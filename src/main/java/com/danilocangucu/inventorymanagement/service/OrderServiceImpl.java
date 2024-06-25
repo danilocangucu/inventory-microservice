@@ -10,10 +10,7 @@ import com.danilocangucu.inventorymanagement.util.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -47,5 +44,15 @@ public class OrderServiceImpl implements OrderService {
         savedOrder.setOrderItems(orderItems);
 
         return orderRepository.save(savedOrder);
+    }
+
+    @Override
+    public Optional<Order> getOrderById(UUID orderId) {
+        return orderRepository.findById(orderId);
+    }
+
+    @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 }

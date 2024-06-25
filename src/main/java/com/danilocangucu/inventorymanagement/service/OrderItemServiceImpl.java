@@ -8,6 +8,8 @@ import com.danilocangucu.inventorymanagement.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -38,5 +40,15 @@ public class OrderItemServiceImpl implements OrderItemService {
         orderItem.setOrder(order);
 
         return orderItemRepository.save(orderItem);
+    }
+
+    @Override
+    public Optional<OrderItem> getOrderItemById(UUID orderItemId) {
+        return orderItemRepository.findById(orderItemId);
+    }
+
+    @Override
+    public List<OrderItem> getAllOrderItems() {
+        return orderItemRepository.findAll();
     }
 }
