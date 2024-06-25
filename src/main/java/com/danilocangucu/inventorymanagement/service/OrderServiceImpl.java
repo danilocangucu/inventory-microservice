@@ -8,12 +8,14 @@ import com.danilocangucu.inventorymanagement.repository.OrderRepository;
 import com.danilocangucu.inventorymanagement.repository.StockRepository;
 import com.danilocangucu.inventorymanagement.util.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
@@ -21,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
     private StockRepository stockRepository;
     @Autowired
     private OrderItemService orderItemService;
+
     @Override
     public Order createOrder(OrderCreationDTO orderToCreate) {
         if (orderToCreate == null || orderToCreate.getItems() == null || orderToCreate.getItems().isEmpty()) {
@@ -37,12 +40,12 @@ public class OrderServiceImpl implements OrderService {
         List<OrderItem> orderItems = new ArrayList<>();
 
         for (OrderItemDTO orderItemDTO : orderToCreate.getItems()) {
-            OrderItem orderItem = orderItemService.createOrderItem(orderItemDTO.getProductId(), orderItemDTO.getQuantity());
+            OrderItem orderItem = orderItemService.createOrderItem(orderItemDTO, savedOrder);
             orderItems.add(orderItem);
         }
 
         savedOrder.setOrderItems(orderItems);
-        
+
         return orderRepository.save(savedOrder);
     }
 }
