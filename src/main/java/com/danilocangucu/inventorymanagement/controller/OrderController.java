@@ -1,6 +1,7 @@
 package com.danilocangucu.inventorymanagement.controller;
 
 import com.danilocangucu.inventorymanagement.dto.OrderCreationDTO;
+import com.danilocangucu.inventorymanagement.dto.OrderUpdateDTO;
 import com.danilocangucu.inventorymanagement.entity.Order;
 import com.danilocangucu.inventorymanagement.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,20 @@ public class OrderController {
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = orderService.getAllOrders();
         return ResponseEntity.ok(orders);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable UUID id, @RequestBody OrderUpdateDTO updatedOrder) {
+        if (updatedOrder.getItems() == null || updatedOrder.getItems().isEmpty()) {
+            System.out.println("Order items are null or empty");
+            return ResponseEntity.notFound().build();
+        }
+
+        try {
+            Order updated = orderService.updateOrder(id, updatedOrder);
+            return ResponseEntity.ok(updated);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

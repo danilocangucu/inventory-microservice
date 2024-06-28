@@ -12,4 +12,5 @@ public interface OrderItemService {
     OrderItem createOrderItem(OrderItemDTO orderItemDTO, Order order);
     Optional<OrderItem> getOrderItemById(UUID orderItemId);
     List<OrderItem> getAllOrderItems();
+    OrderItem updateOrderItem(OrderItemDTO orderItemDTO, UUID orderId);
 }

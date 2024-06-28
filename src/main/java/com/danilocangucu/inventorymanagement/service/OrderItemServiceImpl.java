@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderItemServiceImpl implements OrderItemService {
@@ -50,5 +51,18 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Override
     public List<OrderItem> getAllOrderItems() {
         return orderItemRepository.findAll();
+    }
+
+    @Override
+    public OrderItem updateOrderItem(OrderItemDTO orderItemDTO, UUID orderId) {
+        Optional<OrderItem> possibleOrderItem = getOrderItemById(orderId);
+        if (possibleOrderItem.isEmpty()) {
+            throw new RuntimeException("OrderItem not found with id: " + orderId);
+        }
+
+        OrderItem orderItemToUpdate = possibleOrderItem.get();
+        orderItemToUpdate.setQuantity(orderItemDTO.getQuantity());
+        orderItemToUpdate.setProductId(orderItemDTO.getProductId());
+        return orderItemRepository.save(orderItemToUpdate);
     }
 }
