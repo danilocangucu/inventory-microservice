@@ -93,4 +93,16 @@ public class OrderServiceImpl implements OrderService {
             return false;
         }
     }
+
+    @Override
+    public Order cancelOrder(UUID orderId) {
+        Optional<Order> orderOptional = orderRepository.findById(orderId);
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            order.setStatus(OrderStatus.CANCELLED);
+            return orderRepository.save(order);
+        } else {
+            throw new RuntimeException("Order not found with id: " + orderId);
+        }
+    }
 }

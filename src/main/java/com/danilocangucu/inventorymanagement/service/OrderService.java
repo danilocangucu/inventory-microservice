@@ -14,4 +14,5 @@ public interface OrderService {
     List<Order> getAllOrders();
     Order updateOrder(UUID orderId, OrderUpdateDTO updatedOrder);
     boolean deleteOrder(UUID orderId);
+    Order cancelOrder(UUID orderId);
 }

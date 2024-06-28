@@ -64,4 +64,14 @@ public class OrderController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @PutMapping("/{id}/cancel")
+    public ResponseEntity<Order> cancelOrder(@PathVariable UUID id) {
+        try {
+            Order canceledOrder = orderService.cancelOrder(id);
+            return ResponseEntity.ok(canceledOrder);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
