@@ -85,7 +85,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteOrder(UUID orderId) {
-
+    public boolean deleteOrder(UUID orderId) {
+        if (orderRepository.existsById(orderId)) {
+            orderRepository.deleteById(orderId);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

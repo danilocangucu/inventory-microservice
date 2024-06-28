@@ -65,4 +65,14 @@ public class OrderItemServiceImpl implements OrderItemService {
         orderItemToUpdate.setProductId(orderItemDTO.getProductId());
         return orderItemRepository.save(orderItemToUpdate);
     }
+
+    @Override
+    public boolean deleteOrderItem(UUID orderItemId) {
+        if (orderItemRepository.existsById(orderItemId)) {
+            orderItemRepository.deleteById(orderItemId);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

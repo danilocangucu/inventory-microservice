@@ -53,4 +53,18 @@ public class OrderItemController {
         return ResponseEntity.ok(updatedOrderItem);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOrderItem(@PathVariable UUID id) {
+        try {
+            boolean isDeleted = orderItemService.deleteOrderItem(id);
+            if (isDeleted) {
+                return ResponseEntity.noContent().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

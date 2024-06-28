@@ -13,4 +13,5 @@ public interface OrderItemService {
     Optional<OrderItem> getOrderItemById(UUID orderItemId);
     List<OrderItem> getAllOrderItems();
     OrderItem updateOrderItem(OrderItemDTO orderItemDTO, UUID orderId);
+    boolean deleteOrderItem(UUID orderItemId);
 }
