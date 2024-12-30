@@ -34,7 +34,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -64,7 +64,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -98,7 +98,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -138,7 +138,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -178,7 +178,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -222,7 +222,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text",
 								"disabled": true
 							}
@@ -253,7 +253,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text",
 								"disabled": true
 							}
@@ -285,13 +285,13 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productId\": \"01f3507a-1ea4-4bfe-a52d-202e3bea7d50\",\n    \"quantity\": 100,\n    \"supplier\": {\n        \"id\": \"SUPPLIER_ID\"\n    }\n}",
+							"raw": "{\n    \"productId\": \"01f3507a-1ea4-4bfe-a52d-202e3bea7d50\",\n    \"quantity\": 9999999999,\n    \"supplier\": {\n        \"id\": \"SUPPLIER_ID\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -325,7 +325,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -365,7 +365,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -409,7 +409,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -439,7 +439,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -470,7 +470,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -510,7 +510,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -550,7 +550,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -590,7 +590,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -634,7 +634,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -664,7 +664,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -695,7 +695,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -735,7 +735,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -775,7 +775,7 @@
 						"header": [
 							{
 								"key": "x-api-key",
-								"value": "YOUR_API_KEY",
+								"value": "{{api-key}}",
 								"type": "text"
 							}
 						],
@@ -818,12 +818,8 @@
 	],
 	"variable": [
 		{
-			"key": "id",
-			"value": "1"
-		},
-		{
-			"key": "base_url",
-			"value": "https://postman-rest-api-learner.glitch.me/"
+			"key": "api-key",
+			"value": "YOUR_API_KEY_FROM_THE_APP"
 		}
 	]
 }
