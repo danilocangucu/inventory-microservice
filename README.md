@@ -1,6 +1,5 @@
 ### Inventory Management Microservice
 
-#### Description
 This is a Spring Boot-based microservice for managing inventory operations, including suppliers, stock, orders, and more. It provides a REST API to handle CRUD operations and business logic for inventory management.
 
 ---
@@ -134,7 +133,7 @@ After ensuring PostgreSQL is installed and running, update the credentials in th
 	spring.datasource.password=YOUR_PASSWORD
 	spring.jpa.hibernate.ddl-auto=update
 	spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-api.key=YOUR_API_KEY
+	api.key=YOUR_API_KEY
    ```
 
    - Replace `YOUR_PASSWORD` with the password you set for the `postgres` user during installation.
